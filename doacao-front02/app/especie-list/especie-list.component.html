@@ -1,0 +1,29 @@
+<div class="mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+            <mat-cell *matCellDef="let especie"> {{especie.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
+            <mat-cell *matCellDef="let especie"> {{especie.nome}} </mat-cell>
+        </ng-container>
+		
+        <ng-container matColumnDef="operations">
+            <mat-header-cell *matHeaderCellDef> Operações </mat-header-cell>
+            <mat-cell *matCellDef="let especie">
+                <button mat-button color="primary" (click)="delete(especie.id)"> <mat-icon>delete</mat-icon> </button>
+                <button mat-button color="primary" (click)="edit(especie.id)"> <mat-icon>edit</mat-icon> </button>
+            </mat-cell>
+        </ng-container>
+
+    </mat-table>
+
+    <mat-paginator #paginator [pageSize]="5"></mat-paginator>
+
+</div>

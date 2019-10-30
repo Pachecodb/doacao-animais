@@ -1,0 +1,17 @@
+.example-form {
+    display: flex;
+	flex-direction: column;
+	
+}
+
+.example-form > * {
+	width: 80%;
+	margin: auto;
+}
+.my-class{
+  /* width: 30%;
+  margin-left: 30% */
+
+  width: 300px;
+  margin: auto;
+}

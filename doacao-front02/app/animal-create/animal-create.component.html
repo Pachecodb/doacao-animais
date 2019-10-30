@@ -1,0 +1,66 @@
+<mat-card class="my-class">
+
+    <mat-card-header>
+        <mat-card-title>Cadastro de Animais</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form class="example-form" [formGroup]="animalForm">
+
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Nome" formControlName="nome" required>
+            </mat-form-field>
+            <mat-error>
+                <span *ngIf="animalForm.get('nome') && !animalForm.get('nome').valid && animalForm.get('nome').touched">Digite o
+                    nome!</span>
+            </mat-error>
+
+            <!-- <mat-form-field>
+                <mat-label>Versao</mat-label>
+                <input matInput placeholder="Versao" formControlName="versao" required>
+            </mat-form-field>
+            <mat-error>
+                <span *ngIf="!animalForm.get('versao').valid && animalForm.get('versao').touched">Digite a
+                    idade!</span>
+            </mat-error> -->
+
+            <mat-form-field>
+                <mat-label>Idade</mat-label>
+                <input matInput placeholder="idade" formControlName="idade" required>
+            </mat-form-field>
+            <mat-error>
+                <span *ngIf="animalForm.get('idade') && !animalForm.get('idade').valid && animalForm.get('idade').touched">Digite a
+                    Idade!</span>
+			</mat-error> 
+			
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker1" placeholder="Data de nascimento" formControlName="dataNascimento">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-error>
+                <span *ngIf="animalForm.get('dataNascimento') && !animalForm.get('dataNascimento').valid && animalForm.get('dataNascimento').touched">Digite a
+                    data!</span>
+            </mat-error>
+
+            <mat-form-field>
+                <mat-select placeholder="Especie" formControlName="especie" required>
+                    <mat-option *ngFor="let especie of especies" [value]="especie">{{especie.nome}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-error>
+                <span *ngIf="!animalForm.get('especie').valid && animalForm.get('especie').touched">
+                    Digite a Especie!</span>
+            </mat-error>
+
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button class="primary-button" (click)="cancel()" color="warn">Cancelar</button>
+        <button mat-raised-button (click)="onSubmit()" [disabled]="!animalForm.valid" color="primary">Salvar</button>
+    </mat-card-actions>
+
+</mat-card>
